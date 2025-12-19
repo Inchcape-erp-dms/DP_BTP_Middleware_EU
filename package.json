@@ -1,0 +1,104 @@
+{
+  "name": "Middleware_EU",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@sap-cloud-sdk/connectivity": "^4",
+    "@sap-cloud-sdk/http-client": "^4",
+    "@sap-cloud-sdk/resilience": "^4",
+    "@sap/cds": "^9",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
+    "@sap/xssec": "^4",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": "^9"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "[production]": {
+        "auth": "xsuaa"
+      },
+      "connectivity": true,
+      "destinations": true,
+      "html5-repo": true,
+      "ZLTDBM_CONCESIONARIO_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZLTDBM_CONCESIONARIO_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "SAP_SYSTEM",
+            "path": "/sap/opu/odata/sap/ZLTDBM_CONCESIONARIO_SRV",
+            "Authentication": "PrincipalPropagation",
+            "forwardAuthToken": true
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SAP_SYSTEM",
+            "path": "/sap/opu/odata/sap/ZLTDBM_CONCESIONARIO_SRV"
+          }
+        }
+      },
+      "ZLTDBM_CONCESIONARIO_SRV_PROJECTS": {
+        "kind": "odata-v2",
+        "model": "srv/external/",
+        "[production]": {
+          "credentials": {
+            "destination": "SAP_SYSTEM_PROJECTS",
+            "path": "/sap/opu/odata/sap/ZLTDBM_CONCESIONARIO_SRV",
+            "Authentication": "PrincipalPropagation",
+            "forwardAuthToken": true
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SAP_SYSTEM",
+            "path": "/sap/opu/odata/sap/ZLTDBM_CONCESIONARIO_SRV"
+          }
+        }
+      },
+      "ZLTDBM_UTILITARIO_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZLTDBM_UTILITARIO_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "SAP_SYSTEM",
+            "path": "/sap/opu/odata/sap/ZLTDBM_UTILITARIO_SRV",
+            "Authentication": "PrincipalPropagation",
+            "forwardAuthToken": true
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SAP_SYSTEM",
+            "path": "/sap/opu/odata/sap/ZLTDBM_UTILITARIO_SRV"
+          }
+        }
+      },
+      "ZLTDBM_UTILITARIO_SRV_PROJECTS": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZLTDBM_UTILITARIO_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "SAP_SYSTEM_PROJECTS",
+            "path": "/sap/opu/odata/sap/ZLTDBM_UTILITARIO_SRV",
+            "Authentication": "PrincipalPropagation",
+            "forwardAuthToken": true
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SAP_SYSTEM",
+            "path": "/sap/opu/odata/sap/ZLTDBM_UTILITARIO_SRV2"
+          }
+        }
+      }
+    }
+  }
+}
