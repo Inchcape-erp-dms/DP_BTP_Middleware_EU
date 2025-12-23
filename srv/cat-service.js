@@ -4,6 +4,8 @@ const proxy = require('@sap/cds-odata-v2-adapter-proxy');
 // Importamos los handlers
 const registerUtilitarioHandler = require('./handlers/UtilitarioHandler');
 const registerConcecionarioHandler = require('./handlers/ConcesionarioHandler');
+const registerVehiculosHandler = require('./handlers/VehiculosHandler');
+const registerRepuestosHandler = require('./handlers/RepuestosHandler');
 
 
 module.exports = async (srv) => {
@@ -66,6 +68,13 @@ module.exports = async (srv) => {
     else if (srv.name === 'ConcesionarioService') {
         console.log("Cargando handlers para Consecionario...");
         await registerConcecionarioHandler(srv);
+    }
+    else if (srv.name === 'VehiculosService') {
+        console.log("Cargando handlers para Vehículos...");
+        await registerVehiculosHandler(srv);
+    }
+    else if (srv.name === 'RepuestosService') {
+        await registerRepuestosHandler(srv);
     }
     
 

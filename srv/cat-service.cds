@@ -4,83 +4,88 @@
 
 using { ZLTDBM_UTILITARIO_SRV as utilitario } from './external/ZLTDBM_UTILITARIO_SRV';
 using { ZLTDBM_CONCESIONARIO_SRV as concesionario } from './external/ZLTDBM_CONCESIONARIO_SRV';
-
+using { ZLTDBM_REPUESTOS_SRV as repuestos } from './external/ZLTDBM_REPUESTOS_SRV';
+using { ZLTDBM_VEHICULOS_SRV as vehiculos } from './external/ZLTDBM_VEHICULOS_SRV';
 
 // -----------------------------------------------------------
 // 2. SERVICIO DE REPUESTOS
 // Ruta exacta del servicio de Repuestos en el Backend
 // -----------------------------------------------------------
-// @path: '/sap/opu/odata/sap/ZLTDBM_REPUESTOS_SRV'
-// service RepuestosService @(requires: 'any') {
+@path: '/sap/opu/odata/sap/ZLTDBM_REPUESTOS_SRV'
 
-//     // Aquí SOLO van las entidades que pertenecen originalmente a Repuestos   
-//     // --- Proyecciones Masivas de Repuestos ---
-//     // --- Entidades de Repuestos ---
-//     @readonly entity ADJUNTOSet as projection on repuestos.ADJUNTOSet;
-//     @readonly entity BUSINESSPLANSet as projection on repuestos.BUSINESSPLANSet;
-//     @readonly entity BUSINESSPLAN_CABSet as projection on repuestos.BUSINESSPLAN_CABSet;
-//     @readonly entity CADENA_REEMPLAZOSet as projection on repuestos.CADENA_REEMPLAZOSet;
-//     @readonly entity CAMPOS_OBLIGATORIOSSet as projection on repuestos.CAMPOS_OBLIGATORIOSSet;
-//     @readonly entity CLASE_DOCUMENTO_DEVOLUCIONSet as projection on repuestos.CLASE_DOCUMENTO_DEVOLUCIONSet;
-//     @readonly entity CLASE_PEDSet as projection on repuestos.CLASE_PEDSet;
-//     @readonly entity COLUMNAS_DESDE_CLASE_PEDIDOSet as projection on repuestos.COLUMNAS_DESDE_CLASE_PEDIDOSet;
-//     @readonly entity COND_PAGOSet as projection on repuestos.COND_PAGOSet;
-//     @readonly entity CONSULTA_FACTURASSet as projection on repuestos.CONSULTA_FACTURASSet;
-//     @readonly entity CREA_PEDIDO_CABSet as projection on repuestos.CREA_PEDIDO_CABSet;
-//     @readonly entity CREA_PEDIDO_DETSet as projection on repuestos.CREA_PEDIDO_DETSet;
-//     @readonly entity DATORGANIZSet as projection on repuestos.DATORGANIZSet;
-//     @readonly entity datos_pais_marcaSet as projection on repuestos.datos_pais_marcaSet;
-//     @readonly entity datos_pais_marca_clienteSet as projection on repuestos.datos_pais_marca_clienteSet;
-//     @readonly entity DEST_MERCANCIASSet as projection on repuestos.DEST_MERCANCIASSet;
-//     @readonly entity DEVOLUCION_CABSet as projection on repuestos.DEVOLUCION_CABSet;
-//     @readonly entity DEVOLUCION_DETSet as projection on repuestos.DEVOLUCION_DETSet;
-//     @readonly entity DISPONIBILIDAD_PRECIOSet as projection on repuestos.DISPONIBILIDAD_PRECIOSet;
-//     @readonly entity ESTADO_DEVOLUCIONESSet as projection on repuestos.ESTADO_DEVOLUCIONESSet;
-//     @readonly entity FAMILIA_REPUESTOSSet as projection on repuestos.FAMILIA_REPUESTOSSet;
-//     @readonly entity FILL_RATESet as projection on repuestos.FILL_RATESet;
-//     @readonly entity FILL_RATE_DETALLESet as projection on repuestos.FILL_RATE_DETALLESet;
-//     @readonly entity FILL_RATE_GRAFICOSet as projection on repuestos.FILL_RATE_GRAFICOSet;
-//     @readonly entity VhStatusTypeSet as projection on repuestos.VhStatusTypeSet;
-//     @readonly entity TypeDocAttachmentSet as projection on repuestos.TypeDocAttachmentSet;
-//     @readonly entity check_docSet as projection on repuestos.check_docSet;
-//     @readonly entity INDICADORES_GESTIONSet as projection on repuestos.INDICADORES_GESTIONSet;
-//     @readonly entity INDICADORES_GESTION_DETSet as projection on repuestos.INDICADORES_GESTION_DETSet;
-//     @readonly entity META_FILLRATESet as projection on repuestos.META_FILLRATESet;
-//     @readonly entity MOT_PEDIDOSSet as projection on repuestos.MOT_PEDIDOSSet;
-//     @readonly entity MOTIVO_DEVOLUCIONSet as projection on repuestos.MOTIVO_DEVOLUCIONSet;
-//     @readonly entity MOTIVO_RECHAZOSet as projection on repuestos.MOTIVO_RECHAZOSet;
-//     @readonly entity NPFSet as projection on repuestos.NPFSet;
-//     @readonly entity PEDIDO_ADJUNTOSet as projection on repuestos.PEDIDO_ADJUNTOSet;
-//     @readonly entity PEDIDOS_BACKORDERSet as projection on repuestos.PEDIDOS_BACKORDERSet;
-//     @readonly entity PEDIDOS_BACKORDER_REPARTOSSet as projection on repuestos.PEDIDOS_BACKORDER_REPARTOSSet;
-//     @readonly entity POS_PENDIENTESSet as projection on repuestos.POS_PENDIENTESSet;
-//     @readonly entity RATIOSSet as projection on repuestos.RATIOSSet;
-//     @readonly entity RESUMEN_CREDITOSet as projection on repuestos.RESUMEN_CREDITOSet;
-//     @readonly entity SEGUIMIENTO_DEVOLUCIONSet as projection on repuestos.SEGUIMIENTO_DEVOLUCIONSet;
-//     @readonly entity SEGUIMIENTO_PEDIDOSSet as projection on repuestos.SEGUIMIENTO_PEDIDOSSet;
-//     @readonly entity VENTA_FALLIDASet as projection on repuestos.VENTA_FALLIDASet;
-//     @readonly entity AvailabilityPricesPartsSet as projection on repuestos.AvailabilityPricesPartsSet;
-//     @readonly entity OrderTypeSet as projection on repuestos.OrderTypeSet;
-//     @readonly entity PartnerSet as projection on repuestos.PartnerSet;
-//     @readonly entity OrderReasonSet as projection on repuestos.OrderReasonSet;
-//     @readonly entity F4HelpVhcleESet as projection on repuestos.F4HelpVhcleESet;
-//     @readonly entity AvailabilityTrafficlLightSet as projection on repuestos.AvailabilityTrafficlLightSet;
-//     @readonly entity PartsSwapMaterialSet as projection on repuestos.PartsSwapMaterialSet;
-//     @readonly entity auartSet as projection on repuestos.auartSet;
-//     @readonly entity CREATE_ORDER_AVPRSet as projection on repuestos.CREATE_ORDER_AVPRSet;
-//     @readonly entity CreaPedidoDetSet as projection on repuestos.CreaPedidoDetSet;
-//     @readonly entity EXECUTE_ZUORSet as projection on repuestos.EXECUTE_ZUORSet;
-//     @readonly entity ShippingTypeSet as projection on repuestos.ShippingTypeSet;
+service RepuestosService {
 
-//     // --- Function Imports ---
-//     function GetPCADealerSwap(Kunnr: String, Spart: String, Bukrs: String, Land1: String) returns array of PartnerSet;
-//     function GetOrderType(Spart: String, Bukrs: String, Spras: String, Land1: String) returns array of OrderTypeSet;
-//     function GetBilledToParty(Kunnr: String, Spart: String, Bukrs: String, Land1: String) returns array of PartnerSet;
-//     function GetOrderReasons(Spart: String, Land1: String, Bukrs: String) returns array of OrderReasonSet;
-//     function GetShippedToParty(Kunnr: String, Spart: String, Land1: String, Bukrs: String) returns array of PartnerSet;
-//     function GetSoldToParty(Kunnr: String, Spart: String, Land1: String, Bukrs: String) returns array of PartnerSet;
-//     function GetShippingType(Spart: String, Land1: String, Bukrs: String, Kunnr: String) returns array of ShippingTypeSet;
-// }
+    // --- ENTIDADES (EntitySets) ---
+    @readonly entity ADJUNTOSet as projection on repuestos.ADJUNTOSet;
+    @readonly entity BUSINESSPLANSet as projection on repuestos.BUSINESSPLANSet;
+    @readonly entity BUSINESSPLAN_CABSet as projection on repuestos.BUSINESSPLAN_CABSet;
+    @readonly entity CADENA_REEMPLAZOSet as projection on repuestos.CADENA_REEMPLAZOSet;
+    @readonly entity CAMPOS_OBLIGATORIOSSet as projection on repuestos.CAMPOS_OBLIGATORIOSSet;
+    @readonly entity CLASE_DOCUMENTO_DEVOLUCIONSet as projection on repuestos.CLASE_DOCUMENTO_DEVOLUCIONSet;
+    @readonly entity CLASE_PEDSet as projection on repuestos.CLASE_PEDSet;
+    @readonly entity COLUMNAS_DESDE_CLASE_PEDIDOSet as projection on repuestos.COLUMNAS_DESDE_CLASE_PEDIDOSet;
+    @readonly entity COND_PAGOSet as projection on repuestos.COND_PAGOSet;
+    @readonly entity CONSULTA_FACTURASSet as projection on repuestos.CONSULTA_FACTURASSet;
+    @readonly entity CREA_PEDIDO_CABSet as projection on repuestos.CREA_PEDIDO_CABSet;
+    @readonly entity CREA_PEDIDO_DETSet as projection on repuestos.CREA_PEDIDO_DETSet;
+    @readonly entity DATORGANIZSet as projection on repuestos.DATORGANIZSet;
+    @readonly entity datos_pais_marcaSet as projection on repuestos.datos_pais_marcaSet;
+    @readonly entity datos_pais_marca_clienteSet as projection on repuestos.datos_pais_marca_clienteSet;
+    @readonly entity DEST_MERCANCIASSet as projection on repuestos.DEST_MERCANCIASSet;
+    @readonly entity DEVOLUCION_CABSet as projection on repuestos.DEVOLUCION_CABSet;
+    @readonly entity DEVOLUCION_DETSet as projection on repuestos.DEVOLUCION_DETSet;
+    @readonly entity DISPONIBILIDAD_PRECIOSet as projection on repuestos.DISPONIBILIDAD_PRECIOSet;
+    @readonly entity ESTADO_DEVOLUCIONESSet as projection on repuestos.ESTADO_DEVOLUCIONESSet;
+    @readonly entity FAMILIA_REPUESTOSSet as projection on repuestos.FAMILIA_REPUESTOSSet;
+    @readonly entity FILL_RATESet as projection on repuestos.FILL_RATESet;
+    @readonly entity FILL_RATE_DETALLESet as projection on repuestos.FILL_RATE_DETALLESet;
+    @readonly entity FILL_RATE_GRAFICOSet as projection on repuestos.FILL_RATE_GRAFICOSet;
+    @readonly entity VhStatusTypeSet as projection on repuestos.VhStatusTypeSet;
+    @readonly entity TypeDocAttachmentSet as projection on repuestos.TypeDocAttachmentSet;
+    @readonly entity check_docSet as projection on repuestos.check_docSet;
+    @readonly entity OrderReasonSet as projection on repuestos.OrderReasonSet;
+    @readonly entity auartSet as projection on repuestos.auartSet;
+    @readonly entity INDICADORES_GESTIONSet as projection on repuestos.INDICADORES_GESTIONSet;
+    @readonly entity INDICADORES_GESTION_DETSet as projection on repuestos.INDICADORES_GESTION_DETSet;
+    @readonly entity META_FILLRATESet as projection on repuestos.META_FILLRATESet;
+    @readonly entity MOT_PEDIDOSSet as projection on repuestos.MOT_PEDIDOSSet;
+    @readonly entity MOTIVO_DEVOLUCIONSet as projection on repuestos.MOTIVO_DEVOLUCIONSet;
+    @readonly entity MOTIVO_RECHAZOSet as projection on repuestos.MOTIVO_RECHAZOSet;
+    @readonly entity NPFSet as projection on repuestos.NPFSet;
+    @readonly entity PEDIDO_ADJUNTOSet as projection on repuestos.PEDIDO_ADJUNTOSet;
+    @readonly entity PEDIDOS_BACKORDERSet as projection on repuestos.PEDIDOS_BACKORDERSet;
+    @readonly entity PEDIDOS_BACKORDER_REPARTOSSet as projection on repuestos.PEDIDOS_BACKORDER_REPARTOSSet;
+    @readonly entity POS_PENDIENTESSet as projection on repuestos.POS_PENDIENTESSet;
+    @readonly entity RATIOSSet as projection on repuestos.RATIOSSet;
+    @readonly entity RESUMEN_CREDITOSet as projection on repuestos.RESUMEN_CREDITOSet;
+    @readonly entity SEGUIMIENTO_DEVOLUCIONSet as projection on repuestos.SEGUIMIENTO_DEVOLUCIONSet;
+    @readonly entity SEGUIMIENTO_PEDIDOSSet as projection on repuestos.SEGUIMIENTO_PEDIDOSSet;
+    @readonly entity VENTA_FALLIDASet as projection on repuestos.VENTA_FALLIDASet;
+    @readonly entity AvailabilityPricesPartsSet as projection on repuestos.AvailabilityPricesPartsSet;
+    @readonly entity DISCOUNT_REQ_ORDERSSet as projection on repuestos.DISCOUNT_REQ_ORDERSSet;
+    @readonly entity Discount_REQ_STATUSSet as projection on repuestos.Discount_REQ_STATUSSet;
+    @readonly entity OrderTypeSet as projection on repuestos.OrderTypeSet;
+    @readonly entity ProductSet as projection on repuestos.ProductSet;
+    @readonly entity CREATE_ORDER_AVPRSet as projection on repuestos.CREATE_ORDER_AVPRSet;
+    @readonly entity CabecerapedidotoadjuntoSet as projection on repuestos.CabecerapedidotoadjuntoSet;
+    @readonly entity CabeceratoventafallidaSet as projection on repuestos.CabeceratoventafallidaSet;
+    @readonly entity CreaPedidoDetsetSet as projection on repuestos.CreaPedidoDetsetSet;
+    @readonly entity ZhsDiscountProgramsSet as projection on repuestos.ZhsDiscountProgramsSet;
+    @readonly entity DISCOUNT_REQUESTSet as projection on repuestos.DISCOUNT_REQUESTSet;
+    @readonly entity PartnerSet as projection on repuestos.PartnerSet;
+    @readonly entity F4HelpVhcleESet as projection on repuestos.F4HelpVhcleESet;
+    @readonly entity Order_discountRequestSet as projection on repuestos.Order_discountRequestSet;
+    @readonly entity AvailabilityTrafficlLightSet as projection on repuestos.AvailabilityTrafficlLightSet;
+    @readonly entity AV_PR_STOCK_DISCSet as projection on repuestos.AV_PR_STOCK_DISCSet;
+    @readonly entity ItemsDiscSet as projection on repuestos.ItemsDiscSet;
+
+    // --- FUNCTION IMPORTS ---
+    function GetShippedToParty(Kunnr: String(10), Land1: String(3), Bukrs: String(4), Spart: String(3)) returns array of PartnerSet;
+    function GetSoldToParty(Kunnr: String(10), Land1: String(3), Bukrs: String(4), Spart: String(3)) returns array of PartnerSet;
+    function GetOrderType(Bukrs: String, Spart: String, Land1: String(4)) returns array of OrderTypeSet;
+    function GetOrderReasons(Land1: String(3), Bukrs: String(4), Spart: String(3)) returns array of OrderReasonSet;
+    function GetBilledToParty(Spart: String(3), Bukrs: String(4), Kunnr: String(10), Land1: String(3)) returns array of PartnerSet;
+}
 
 
 
@@ -148,54 +153,57 @@ service UtilitarioService @(requires: 'any') {
 // -----------------------------------------------------------
 // 4. SERVICIO DE VEHICULOS
 // -----------------------------------------------------------
-// @path: '/sap/opu/odata/sap/ZLTDBM_VEHICULOS_SRV'
-// service VehiculosService @(requires: 'any') {
+@path: '/sap/opu/odata/sap/ZLTDBM_VEHICULOS_SRV'
+service VehiculosService @(requires: 'any') {
 
-//     // --- Entidades de Vehículos ---
-//   @readonly entity Details_disponibilidad_precSet as projection on vehiculos.Details_disponibilidad_precSet;
-//     @readonly entity EXECUTE_YRECSet as projection on vehiculos.EXECUTE_YRECSet;
-//     @readonly entity VEHICLE_HIST_FILESet as projection on vehiculos.VEHICLE_HIST_FILESet;
-//     @readonly entity VEHICLE_HIST_FILE_CABSet as projection on vehiculos.VEHICLE_HIST_FILE_CABSet;
-//     @readonly entity VH_FAKTUR_POLICESet as projection on vehiculos.VH_FAKTUR_POLICESet;
-//     @readonly entity CREA_OFERTA_CABSet as projection on vehiculos.CREA_OFERTA_CABSet;
-//     @readonly entity OFFER_PDF_SHOWSet as projection on vehiculos.OFFER_PDF_SHOWSet;
-//     @readonly entity CREATE_ORDER_YORCSet as projection on vehiculos.CREATE_ORDER_YORCSet;
-//     @readonly entity OrderFollowUpSet as projection on vehiculos.OrderFollowUpSet;
-//     @readonly entity VehicleDetailSet as projection on vehiculos.VehicleDetailSet;
-//     @readonly entity ItemDetailInvoiceTextSet as projection on vehiculos.ItemDetailInvoiceTextSet;
-//     @readonly entity ItemDetailDealerAdditionalTextSet as projection on vehiculos.ItemDetailDealerAdditionalTextSet;
-//     @readonly entity RequestsFollowUpSet as projection on vehiculos.RequestsFollowUpSet;
-//     @readonly entity RequestsFollowUpResultSet as projection on vehiculos.RequestsFollowUpResultSet;
-//     @readonly entity Vehicle_colorsSet as projection on vehiculos.Vehicle_colorsSet;
-//     @readonly entity BUSINESSPLANSet as projection on vehiculos.BUSINESSPLANSet;
-//     @readonly entity BUSINESSPLAN_CABSet as projection on vehiculos.BUSINESSPLAN_CABSet;
-//     @readonly entity CREA_OFERTA_DETSet as projection on vehiculos.CREA_OFERTA_DETSet;
-//     @readonly entity CREA_PEDIDO_CABSet as projection on vehiculos.CREA_PEDIDO_CABSet;
-//     @readonly entity CREA_PEDIDO_DETSet as projection on vehiculos.CREA_PEDIDO_DETSet;
-//     @readonly entity INIDICADORES_GESTIONSet as projection on vehiculos.INIDICADORES_GESTIONSet;
-//     @readonly entity INIDICADORES_GESTION_DETSet as projection on vehiculos.INIDICADORES_GESTION_DETSet;
-//     @readonly entity ITEMSSet as projection on vehiculos.ITEMSSet;
-//     @readonly entity MASIVO_CAB_FEDSet as projection on vehiculos.MASIVO_CAB_FEDSet;
-//     @readonly entity MASIVO_DET_FEDSet as projection on vehiculos.MASIVO_DET_FEDSet;
-//     @readonly entity RESUMEN_CREDITOSet as projection on vehiculos.RESUMEN_CREDITOSet;
-//     @readonly entity SEGUIMIENTO_PEDIDOSVHSet as projection on vehiculos.SEGUIMIENTO_PEDIDOSVHSet;
-//     @readonly entity SEGUIMIENTO_SOLICITUDESSet as projection on vehiculos.SEGUIMIENTO_SOLICITUDESSet;
-//     @readonly entity UBICACIONSet as projection on vehiculos.UBICACIONSet;
-//     @readonly entity UNIDADES_ASIGNADASSet as projection on vehiculos.UNIDADES_ASIGNADASSet;
-//     @readonly entity Vehicle_CLientSet as projection on vehiculos.Vehicle_CLientSet;
-//     @readonly entity Vehicle_Client_detailSet as projection on vehiculos.Vehicle_Client_detailSet;
-//     @readonly entity DISPONIBILIDAD_PRECIOSet as projection on vehiculos.DISPONIBILIDAD_PRECIOSet;
-//     @readonly entity VEHICLE_DELIVERYSet as projection on vehiculos.VEHICLE_DELIVERYSet;
-//     @readonly entity ItemDetailSet as projection on vehiculos.ItemDetailSet;
-//     @readonly entity ItemDetailPricingSet as projection on vehiculos.ItemDetailPricingSet;
-//     @readonly entity ItemDetailProformaSet as projection on vehiculos.ItemDetailProformaSet;
-//     @readonly entity SO_OPTSet as projection on vehiculos.SO_OPTSet;
-//     @readonly entity ConfiguratorSet as projection on vehiculos.ConfiguratorSet;
-//     @readonly entity VEHICLE_HISTORY_FORMSet as projection on vehiculos.VEHICLE_HISTORY_FORMSet;
-//     @readonly entity EXECUTE_BUPASet as projection on vehiculos.EXECUTE_BUPASet;
-//     @readonly entity EXECUTE_WYVHSet as projection on vehiculos.EXECUTE_WYVHSet;
-//     @readonly entity CREATE_BPSet as projection on vehiculos.CREATE_BPSet;
-// }
+    // --- Entidades de Vehículos ---
+  @readonly entity ZSH_DELIVERY_DEALERSSet as projection on vehiculos.ZSH_DELIVERY_DEALERSSet;
+    @readonly entity CREA_OFERTA_CABSet as projection on vehiculos.CREA_OFERTA_CABSet;
+    @readonly entity Details_disponibilidad_precSet as projection on vehiculos.Details_disponibilidad_precSet;
+    @readonly entity Vehicle_colorsSet as projection on vehiculos.Vehicle_colorsSet;
+    @readonly entity CREDIT_LIMIT_TYPESet as projection on vehiculos.CREDIT_LIMIT_TYPESet;
+    @readonly entity VEHICLE_USAGESet as projection on vehiculos.VEHICLE_USAGESet;
+    @readonly entity ZSH_REGSTATUSSet as projection on vehiculos.ZSH_REGSTATUSSet;
+    @readonly entity BUSINESSPLANSet as projection on vehiculos.BUSINESSPLANSet;
+    @readonly entity BUSINESSPLAN_CABSet as projection on vehiculos.BUSINESSPLAN_CABSet;
+    @readonly entity CREA_OFERTA_DETSet as projection on vehiculos.CREA_OFERTA_DETSet;
+    @readonly entity CREA_PEDIDO_CABSet as projection on vehiculos.CREA_PEDIDO_CABSet;
+    @readonly entity CREA_PEDIDO_DETSet as projection on vehiculos.CREA_PEDIDO_DETSet;
+    @readonly entity INIDICADORES_GESTIONSet as projection on vehiculos.INIDICADORES_GESTIONSet;
+    @readonly entity INIDICADORES_GESTION_DETSet as projection on vehiculos.INIDICADORES_GESTION_DETSet;
+    @readonly entity MASIVO_CAB_FEDSet as projection on vehiculos.MASIVO_CAB_FEDSet;
+    @readonly entity MASIVO_DET_FEDSet as projection on vehiculos.MASIVO_DET_FEDSet;
+    @readonly entity RESUMEN_CREDITOSet as projection on vehiculos.RESUMEN_CREDITOSet;
+    @readonly entity SEGUIMIENTO_PEDIDOSVHSet as projection on vehiculos.SEGUIMIENTO_PEDIDOSVHSet;
+    @readonly entity SEGUIMIENTO_SOLICITUDESSet as projection on vehiculos.SEGUIMIENTO_SOLICITUDESSet;
+    @readonly entity UBICACIONSet as projection on vehiculos.UBICACIONSet;
+    @readonly entity UNIDADES_ASIGNADASSet as projection on vehiculos.UNIDADES_ASIGNADASSet;
+    @readonly entity Vehicle_CLientSet as projection on vehiculos.Vehicle_CLientSet;
+    @readonly entity Vehicle_Client_detailSet as projection on vehiculos.Vehicle_Client_detailSet;
+    @readonly entity DISPONIBILIDAD_PRECIOSet as projection on vehiculos.DISPONIBILIDAD_PRECIOSet;
+    @readonly entity SO_OPTSet as projection on vehiculos.SO_OPTSet;
+    @readonly entity AVAIL_PRICES_MTSet as projection on vehiculos.AVAIL_PRICES_MTSet;
+    @readonly entity EXECUTE_YRECSet as projection on vehiculos.EXECUTE_YRECSet;
+    @readonly entity CREATE_ORDER_YORCSet as projection on vehiculos.CREATE_ORDER_YORCSet;
+    @readonly entity OEMModelSet as projection on vehiculos.OEMModelSet;
+    @readonly entity LEAD_MANAGEMENTCABSet as projection on vehiculos.LEAD_MANAGEMENTCABSet;
+    @readonly entity LEAD_MANAGEMENTCAB001Set as projection on vehiculos.LEAD_MANAGEMENTCAB001Set;
+    @readonly entity ZSH_GROUP_LEADMGTSet as projection on vehiculos.ZSH_GROUP_LEADMGTSet;
+    @readonly entity ZSH_RPTTYPE_LEADMGTSet as projection on vehiculos.ZSH_RPTTYPE_LEADMGTSet;
+    @readonly entity ZSH_SITE_LEADMGTSet as projection on vehiculos.ZSH_SITE_LEADMGTSet;
+    @readonly entity ZSH_UPLTYPE_LEADMGTSet as projection on vehiculos.ZSH_UPLTYPE_LEADMGTSet;
+    @readonly entity ILM_TEMPLATESet as projection on vehiculos.ILM_TEMPLATESet;
+    @readonly entity IlmTemplatePosSet as projection on vehiculos.IlmTemplatePosSet;
+    @readonly entity CREATE_OFFER_MTSet as projection on vehiculos.CREATE_OFFER_MTSet;
+    @readonly entity CANCEL_RESVSet as projection on vehiculos.CANCEL_RESVSet;
+    @readonly entity ILM_MAILSet as projection on vehiculos.ILM_MAILSet;
+    @readonly entity ReportSet as projection on vehiculos.ReportSet;
+    @readonly entity ModSalesOrderSet as projection on vehiculos.ModSalesOrderSet;
+    @readonly entity ModDealerAdditionalTextSet as projection on vehiculos.ModDealerAdditionalTextSet;
+    @readonly entity ModDistInternalTextSet as projection on vehiculos.ModDistInternalTextSet;
+    @readonly entity CREATE_BACKORDERSet as projection on vehiculos.CREATE_BACKORDERSet;
+    @readonly entity VehicleHandoverSecondSet as projection on vehiculos.VehicleHandoverSecondSet;
+}
 // -----------------------------------------------------------
 // 5. SERVICIO DE CONCESIONARIO
 // -----------------------------------------------------------

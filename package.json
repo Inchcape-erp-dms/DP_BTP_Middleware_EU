@@ -98,6 +98,78 @@
             "path": "/sap/opu/odata/sap/ZLTDBM_UTILITARIO_SRV2"
           }
         }
+      },
+      "ZLTDBM_VEHICULOS_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZLTDBM_VEHICULOS_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "SAP_SYSTEM",
+            "path": "/sap/opu/odata/sap/ZLTDBM_VEHICULOS_SRV",
+            "Authentication": "PrincipalPropagation",
+            "forwardAuthToken": true
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SAP_SYSTEM",
+            "path": "/sap/opu/odata/sap/ZLTDBM_VEHICULOS_SRV"
+          }
+        }
+      },
+      "ZLTDBM_VEHICULOS_SRV_PROJECTS": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZLTDBM_VEHICULOS_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "SAP_SYSTEM_PROJECTS",
+            "path": "/sap/opu/odata/sap/ZLTDBM_VEHICULOS_SRV",
+            "Authentication": "PrincipalPropagation",
+            "forwardAuthToken": true
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SAP_SYSTEM",
+            "path": "/sap/opu/odata/sap/ZLTDBM_VEHICULOS_SRV"
+          }
+        }
+      },
+       "ZLTDBM_REPUESTOS_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZLTDBM_REPUESTOS_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "SAP_SYSTEM",
+            "path": "/sap/opu/odata/sap/ZLTDBM_REPUESTOS_SRV",
+            "Authentication": "PrincipalPropagation",
+            "forwardAuthToken": true
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SAP_SYSTEM",
+            "path": "/sap/opu/odata/sap/ZLTDBM_REPUESTOS_SRV"
+          }
+        }
+      },
+      "ZLTDBM_REPUESTOS_SRV_PROJECTS": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZLTDBM_REPUESTOS_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "SAP_SYSTEM_PROJECTS",
+            "path": "/sap/opu/odata/sap/ZLTDBM_REPUESTOS_SRV",
+            "Authentication": "PrincipalPropagation",
+            "forwardAuthToken": true
+          }
+        },
+        "[development]": {
+          "credentials": {
+            "destination": "SAP_SYSTEM",
+            "path": "/sap/opu/odata/sap/ZLTDBM_REPUESTOS_SRV"
+          }
+        }
       }
     }
   }

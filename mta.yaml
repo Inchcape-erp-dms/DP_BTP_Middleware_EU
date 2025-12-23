@@ -53,7 +53,7 @@ modules:
 
   - name: Middleware_EU-app-deployer
     type: com.sap.application.content
-    path: gen
+    path: .
     requires:
       - name: Middleware_EU-auth
       - name: srv-api
