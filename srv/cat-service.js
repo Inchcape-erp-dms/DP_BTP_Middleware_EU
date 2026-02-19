@@ -13,6 +13,7 @@ module.exports = async (srv) => {
     // ----------------------------------------------------------------
     // 1. Configuración de Bootstrap (Proxy V2)
     // ----------------------------------------------------------------
+
     cds.on('bootstrap', app => {
         app.use(proxy());
     });
